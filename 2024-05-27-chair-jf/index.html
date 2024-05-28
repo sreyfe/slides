@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Stühle in DraCor</title>
 
 		<link rel="stylesheet" href="../revealjs/dist/reset.css">
 		<link rel="stylesheet" href="../revealjs/dist/reveal.css">
@@ -18,7 +18,161 @@
 			<div class="slides">
 				<section data-markdown="" data-separator="^\n---\n" data-separator-vertical="^\n--\n" data-charset="utf-8">
 					<script type="text/template">
-						#### Test
+
+### Stühle in DraCor
+Jonah Lubin, nach einer Idee von Viktor Illmer<!-- .element: style="font-size:0.8em;" -->
+
+---
+
+### Hintergrund
+
+- Frank und ich haben letztens [Requisiten untersucht](https://zenodo.org/records/10698448)
+	- Erstmal SpaCy benutzt, um Requisitenklassen zu bauen
+	- Danach diese Requisitenklassen als string searches benutzt, um Häufigkeit der Requisiten in Regieanweisungen (von DraCor) zu untersuchen
+
+--
+
+### Was ähnliches für Stühle machen:
+
+- Klasse für Stühle bauen, Regieanweisungen für Erwähnungen durchsuchen, die plotten und chronologisch mit anderen Requisiten vergleichen
+
+Klasse für Waffen | Klasse für Stühle
+----|----
+![weapons class](images/waffen_klasse.png)| ![chairs class](images/stuhl_klasse.png)
+
+---
+
+### Erwähnungen  
+<br/>
+
+- 1,295 mal erwähnt  
+
+- kommt relativ häufig vor:  
+
+	- Waffen: 2265
+	- Dolch: 308
+	- Pflanzen: 1594
+	- Blumen: 448
+	- Kaffee: 101
+
+--
+
+#### Stücke mit dein meisten Stühlen
+
+Titel|Autor|Jahr|Stühle
+-----|-----|----|------
+Das Konzert|Hermann Bahr|1909|33
+Mein Leopold|L'Arronge|1873|24
+Das Phantom|Hermann Bahr|1913|22
+Die Haubenlerche|Ernst von Wildenbruch|1891|22
+Die Spielereien einer Kaiserin|Max Dauthendey|1911|21
+
+
+---
+
+### Entwicklung
+Aufstieg des Stuhls:
+
+![stuhl](images/stuhl.png)<!-- .element height="400px;" -->
+
+--
+
+Stühle werden, wie alle Requisiten, immer häufiger erwähnt:
+
+Alle Requisiten | nur Stühle
+----|----
+![props per year](images/props_per_year.png)| ![stuhl](images/stuhl.png)
+~.377x-644.5|~.01520x-25.73
+
+Requisiten überhaupt steigen aber steiler auf
+
+--
+
+Stühle steigen aber steiler als andere Requisiten auf:
+Waffen | Stühle
+----|----
+![Waffen](images/waffen.png)| ![stuhl](images/stuhl.png)
+~.00741x-9.79|~.01520x-25.73
+
+--
+
+Stühle steigen aber steiler als andere Requisiten auf:
+Dolch | Stühle
+----|----
+![Dolch](images/dolch.png)| ![stuhl](images/stuhl.png)
+~-.00042x-1.25|~.01520x-25.73
+
+--
+
+Weniger steil als Pflanzen!:
+Pflanzen | Stühle
+----|----
+![Pflanzen](images/pflanzen.png)| ![stuhl](images/stuhl.png)
+~.02436x-41.35|~.01520x-25.73
+
+--
+
+Stühle steigen aber steiler als andere Requisiten auf:
+Blumen | Stühle
+----|----
+![Blumen](images/blumen.png)| ![stuhl](images/stuhl.png)
+~.01291x-22.47|~.01520x-25.73
+
+--
+
+Stühle steigen aber steiler als andere Requisiten:
+Kaffee | Stühle
+----|----
+![Kaffee](images/kaffee.png)| ![stuhl](images/stuhl.png)
+~.0134x-2.32|~.01520x-25.73
+
+--
+
+Aber auch weniger steil als Tische:
+Tische | Stühle
+----|----
+![Kaffee](images/tisch.png)| ![stuhl](images/stuhl.png)
+~.0463x-80.19|~.01520x-25.73
+
+
+--
+Also:
+
+- Die Regressionslinie von Stühlen ist steiler als Waffen, Dolche, Blumen, und bisschen steiler als Kaffee
+- aber weniger steil als Pflanzen, Tische, und Requisiten überhaupt.
+- Das legt nahe, dass es eine Klasse oder Klassen von Requisiten gibt, die steiler als z.B. Waffen aufsteigt, um die Regressionsline für alle Requisiten so steil zu machen
+
+--
+
+Oder, was fehlt? 
+
+Alle Requisiten | Waffen
+----|----
+![props per year](images/props_per_year.png)| ![waffen](images/waffen.png)
+~.377x-644.5|~.00741x-9.79
+
+---
+
+### Meine Vermutung:
+
+- Regieanweisungen sind im Laufe der Zeit länger und expliziter geworden. Früher, wurden ikonische Requisiten wie Waffen öfter explizit genannt, und weniger ikonische Requisiten (Stühle, Tische) -- weniger. Also im Laufe der Zeit, kommen mehr und mehr tagtägliche Gegenstände in Regieanweisungen vor, deswegen sind die Regressionslinien dafür steiler. Da ikonische Gegenstände (wie Waffen) auch am Anfang explizit gennant wurden, sind deren Regressionslinien weniger steil.
+
+--
+
+also:
+
+- Wenn das stimmt, gibt es eine Klasse von tagtäglichen Gegenständen, die im Laufe der Zeit häufiger in Regieanweisungen vorkommen
+- Es wäre interessant, diese Klasse zu untersuchen
+
+--
+
+danke!
+
+
+
+
+
+
 					</script>
 				</section>
 			</div>
