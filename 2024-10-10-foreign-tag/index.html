@@ -12,6 +12,14 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../revealjs/plugin/highlight/monokai.css">
+<style>
+.slavic {
+	background-color: red;
+}
+.semitic {
+	background-color: green;
+}
+</style>
 	</head>
 	<body>
 		<div class="reveal">
@@ -26,158 +34,60 @@ Jonah Lubin, Frank Fischer<!-- .element: style="font-size:0.8em;" -->
 
 ### Background -- What is Yiddish?
 
-- Frank und ich haben letztens [Requisiten untersucht](https://zenodo.org/records/10698448)
-	- Erstmal SpaCy benutzt, um Requisitenklassen zu bauen
-	- Danach diese Requisitenklassen als string searches benutzt, um Häufigkeit der Requisiten in Regieanweisungen (von DraCor) zu untersuchen
+- Yiddish is the traditional vernacular of Ashkenazi Jewry
+- It has been described as a mixed language (cf. Geller, Gajek) with elements from Germanic, Slavic, and Semitic languages
 
 --
 
-### Was ähnliches für Stühle machen:
-
-- Klasse für Stühle bauen, Regieanweisungen für Erwähnungen durchsuchen, die plotten und chronologisch mit anderen Requisiten vergleichen
-
-Klasse für Waffen | Klasse für Stühle
-----|----
-![weapons class](images/waffen_klasse.png)| ![chairs class](images/stuhl_klasse.png)
-
----
-
-### Erwähnungen  
-<br/>
-
-- 1,295 mal erwähnt  
-
-- kommt relativ häufig vor:  
-
-	- Waffen: 2265
-	- Dolch: 308
-	- Pflanzen: 1594
-	- Blumen: 448
-	- Kaffee: 101
+- Any given Yiddish sentence is likely to contain words from these sources. 
+- To illustrate this, let's look at a sentence, chosen out of hunger, from Mendele's <em>Masoes binyomin hashlishi</em>:
 
 --
 
-#### Stücke mit dein meisten Stühlen
-
-Titel|Autor|Jahr|Stühle
------|-----|----|------
-Das Konzert|Hermann Bahr|1909|33
-Mein Leopold|L'Arronge|1873|24
-Das Phantom|Hermann Bahr|1913|22
-Die Haubenlerche|Ernst von Wildenbruch|1891|22
-Die Spielereien einer Kaiserin|Max Dauthendey|1911|21
-
-
----
-
-### Entwicklung
-Aufstieg des Stuhls:
-
-![stuhl](images/stuhl.png)<!-- .element height="400px;" -->
+<div style="font-size: 30px">
+	Germanic, <span class="slavic">Slavic</span>, <span class="semitic">Semitic</span>
+	<br>
+<div dir="rtl">
+אַ שטיקל ברױט מיט אַ <span class="slavic">קאָליש</span>, אַבי ס'איז נאָר דאָ איז זעהר אַ גוטער מיטאָג, װער <span class="semitic">שמועסט</span> אַ <span class="slavic">בולקע</span> מיט אַ ראָסל־פֿלײש פֿרײטאָג, װער עס האָט נאָר, דאָס איז <span class="slavic">טאַקע</span> אַ <span class="semitic">מאַכל מלכים</span>, קײן בעסערס דערפֿון, איז שױן דאַכט זיך, אױף דער װעלט נישטאָ. 
+</div>
+<br>
+Transliteration: A shtikl broyt mit a <span class="slavic">kolish</span>, abi s'iz nor do iz zeyer a guter mitog, ver <span class="semitic">shmuest</span> a <span class="slavic">bulke</span> mit a rosl-fleysh fraytog, ver es hot nor, dos iz <span class="slavic">take</span> a <span class="semitic">maykhl-melokhim</span>, keyn besers derfun, iz shoyn dakht zikh, oyf der velt nishto
+<br>
+<br>
+Translation: A piece of bread with <span class="slavic">gruel</span>, even if it's very thin, is a very good lunch, not to <span class="semitic">mention</span> a <span class="slavic">roll</span> with pot-roast on Friday, if you've got it, that's <span class="slavic">truely</span> a <span class="semitic">dish of kings</span>, and there's no better food, I don't think, in the world. (31)
+</div>
 
 --
 
-Stühle werden, wie alle Requisiten, immer häufiger erwähnt:
-
-Alle Requisiten | nur Stühle
-----|----
-![props per year](images/props_per_year.png)| ![stuhl](images/stuhl.png)
-~.377x-644.5|~.01520x-25.73
-
-Requisiten überhaupt steigen aber steiler auf
+## Yiddish is very mixed!
+- And it would be wrong to point to any of these elements and say they are not Yiddish
 
 --
 
-Stühle steigen aber steiler als andere Requisiten auf:
-Waffen | Stühle
-----|----
-![Waffen](images/waffen.png)| ![stuhl](images/stuhl.png)
-~.00741x-9.79|~.01520x-25.73
+## and yet...
+- We can still identify places in the same text where, we could say, the component languages of Yiddish are being spoken (or words are being used), without the speech being "in Yiddish"
 
 --
 
-Stühle steigen aber steiler als andere Requisiten auf:
-Dolch | Stühle
-----|----
-![Dolch](images/dolch.png)| ![stuhl](images/stuhl.png)
-~-.00042x-1.25|~.01520x-25.73
+## East Slavic Vernacular:
 
---
+Germanic, <span class="slavic">Slavic</span>, <span class="semitic">Semitic</span>
 
-Weniger steil als Pflanzen!:
-Pflanzen | Stühle
-----|----
-![Pflanzen](images/pflanzen.png)| ![stuhl](images/stuhl.png)
-~.02436x-41.35|~.01520x-25.73
+<div style="font-size: 30px">
+<div dir="rtl">
+-- <span class="slavic">טי איז טונעיאַדעװקי? קאַזשע־זשע שטשאָ טי װיטאָראַשטשיל נאַ מעני אָטשי אי גליאַניש יאַק שילאָני. אַליע מאָזשע טי טאַקי אי שילאָני? סאָפּ, הײטאַ, סאָפּ!</span></div>
+<br>
+Transliteration: <span class="slavic">Ti iz tuneyadevki? Kazhe-zhe shtsho ti vitorashtshil na meni otshi i glyanish yak shiloni. Alye mozhe ti taki i shiloni? Sop, heyta, sop!</span>
+<br>
+<br>
+Translation: <span class="slavic">???</span>
 
---
-
-Stühle steigen aber steiler als andere Requisiten auf:
-Blumen | Stühle
-----|----
-![Blumen](images/blumen.png)| ![stuhl](images/stuhl.png)
-~.01291x-22.47|~.01520x-25.73
-
---
-
-Stühle steigen aber steiler als andere Requisiten:
-Kaffee | Stühle
-----|----
-![Kaffee](images/kaffee.png)| ![stuhl](images/stuhl.png)
-~.0134x-2.32|~.01520x-25.73
-
---
-
-Aber auch weniger steil als Tische:
-Tische | Stühle
-----|----
-![Kaffee](images/tisch.png)| ![stuhl](images/stuhl.png)
-~.0463x-80.19|~.01520x-25.73
+</div>
 
 
---
-Also:
 
-- Die Regressionslinie von Stühlen ist steiler als Waffen, Dolche, Blumen, und bisschen steiler als Kaffee
-- aber weniger steil als Pflanzen, Tische, und Requisiten überhaupt.
-- Das legt nahe, dass es eine Klasse oder Klassen von Requisiten gibt, die steiler als z.B. Waffen aufsteigt, um die Regressionsline für alle Requisiten so steil zu machen
 
---
 
-Oder, was fehlt? 
-
-Alle Requisiten | Waffen
-----|----
-![props per year](images/props_per_year.png)| ![waffen](images/waffen.png)
-~.377x-644.5|~.00741x-9.79
-
----
-
-### Meine Vermutung:
-
-- Regieanweisungen sind im Laufe der Zeit länger und expliziter geworden. Früher, wurden ikonische Requisiten wie Waffen öfter explizit genannt, und weniger ikonische Requisiten (Stühle, Tische) -- weniger. Also im Laufe der Zeit, kommen mehr und mehr tagtägliche Gegenstände in Regieanweisungen vor, deswegen sind die Regressionslinien dafür steiler. Da ikonische Gegenstände (wie Waffen) auch am Anfang explizit gennant wurden, sind deren Regressionslinien weniger steil.
-
---
-
-also:
-
-- Wenn das stimmt, gibt es eine Klasse von tagtäglichen Gegenständen, die im Laufe der Zeit häufiger in Regieanweisungen vorkommen
-- Die Regressionslinien sind steiler für anikonische Gegenstände als Ikonische.
-
---
-
-Ikonisch | Anikonisch
-----|----
-![dolch](images/dolch.png)| ![waffen](images/stuhl.png)
-
---
-Ikonisch | Anikonisch
-----|----
-![krone](images/krone.png) | ![tische](images/tisch.png)
-
---
-
-danke!
 
 
 
