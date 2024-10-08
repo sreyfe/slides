@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Stühle in DraCor</title>
+		<title>The "Foreign" Tag in Yiddish</title>
 
 		<link rel="stylesheet" href="../revealjs/dist/reset.css">
 		<link rel="stylesheet" href="../revealjs/dist/reveal.css">
@@ -59,17 +59,17 @@ Translation: A piece of bread with <span class="slavic">gruel</span>, even if it
 
 --
 
-## Yiddish is very mixed!
+### Yiddish is very mixed!
 - And it would be wrong to point to any of these elements and say they are not Yiddish
 
 --
 
-## and yet...
+### and yet...
 - We can still identify places in the same text where, we could say, the component languages of Yiddish are being spoken (or words are being used), without the speech being "in Yiddish"
 
 --
 
-## East Slavic Vernacular:
+### East Slavic Vernacular:
 
 Germanic, <span class="slavic">Slavic</span>, <span class="semitic">Semitic</span>
 
@@ -84,14 +84,109 @@ Translation: <span class="slavic">???</span>
 
 </div>
 
+---
+### There is a general question here: what is foreign in a language?
 
+- This is a contested issue among philosphers (cf. Derrida) and linguists (cf. Mahootian)
 
+- And yet, TEI has a element which should uncomplicatedly mark a foreign word
 
+- \<foreign\> (foreign) identifies a word or phrase as belonging to some language other than that of the surrounding text.
 
+--
 
+### On the "foreign" element
 
+- Barbaric and Halonja, who investigated this issue in terms of Croatian
+	- They claim that the "foreign" element should be applied to instances of code switching
 
+- Schlitz has recommended a "borrowing" element, but it is not in the standard
 
+--
+
+- So the "foreign" element is a strange thing, which would seem to imply a truely foreign aspect of language, distinct from a truly native aspect
+- And yet:
+	- It's also a very useful thing, especially in Yiddish, for examining the sort of language used in individual texts
+- So what to do?
+
+---
+
+### YiDraCor
+
+- This a question we began asking ourselves while setting up the Yiddish corpus of DraCor
+![YiDraCor](images/YiDraCor.png)<!-- .element height="450px;" -->
+
+--
+
+### What is DraCor?
+
+![DraCor frontpage as of 5 October 2024](images/dracor-frontpage-2024-10-05.png)
+
+- Short for *drama corpora*, a growing collection of plays in (mostly) European languages, all encoded in TEI.
+- As of now, 25 DraCor corpora in 19 languages, almost 4,000 plays.
+- DraCor also provides an interface for research into European drama from Greek antiquity to the 20th century.
+- check it out: [**dracor.org**](https://dracor.org/)
+
+<!-- .element: style="font-size:0.7em;" -->
+
+--
+
+### Like all Yiddish text, the plays have many words of many origins
+
+- So how do we say what is foreign?
+- Or, put otherwise, what is code-switching and what is a borrowing?
+
+--
+
+### First step:
+- Think pragmatically:
+	- If there's no true foreignness in language, then what can a foreign element achieve?
+	- It can tell us about the linguistic environments of the plays
+
+--
+### What might be a useful heuristic?
+
+- Take a cue from Mahootian:
+	- "In contrast, borrowings tend to be short and phonologically and morphologically adapted to the host language." 514
+	- No access to phonology in written documents, but morphology for sure.
+
+--
+### So first, we can see if the words exhibit non-Yiddish morphology
+- e.g. in *Der man untern tish* we have והוּא יִמשוׂל בּה (*vehu yimshol bo*)
+	- Phrase in Hebrew
+	- *yimshol* is a (declined) prefix form of Hebrew מ-ש-ל
+	- If the form were morphologically adapted (e.g. *vet mosheln*), then it would be less clear
+	- But since it exhibits Hebrew morphology, and since it is in a Hebrew phrase, we mark this as foreign
+
+--
+### But if there's no distinctly non-Yiddish morphology...
+- Following Mahootian "Words fully integrated and used by monolinguals, usually without any knowledge of the words’ origins, are loanwords." (513)
+- Alternatively, following Stutchkoff, words that might be in the lexicon of Yiddish speakers, but were not in the so-called *kulturshprakh*
+	- i.e., not in the international standard register
+
+--
+### For example:
+- in *Engshaft* we have באָטאָן (*boton*)
+	- a rendering of English *button*
+	- was used by bilingual English-Yiddish speakers in America 
+	- but would not have been understood by European monolinguals, and it was not in the standard register
+
+--
+#### This allows us to see investigate linguistic context of the plays
+
+*Engshaft*| *Yudale der blinder* | *Der man untern tish*
+----|----|----
+![engshaft counts](images/rose_counts.png)| ![yudale counts](images/yudale_counts.png)| ![tish counts](images/tish_counts.png)
+
+---
+
+### Conclusion
+- The foreign element should not be confused for an essential judgement on foreignness in language
+- It is a useful tool, but its use and ends should be decided pragmatically on a project-by-project basis
+- We hope our experience can be helpful!
+
+--
+# Thank you!
 
 
 					</script>
