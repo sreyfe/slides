@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Yiddish Digital Humanities</title>
+
+		<link rel="stylesheet" href="../revealjs/dist/reset.css">
+		<link rel="stylesheet" href="../revealjs/dist/reveal.css">
+		<link rel="stylesheet" href="../revealjs/dist/theme/serif.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../revealjs/plugin/highlight/monokai.css">
+				<script>
+			function getRandomInt(min, max) {
+				return Math.floor(Math.random() * (max - min)) + min;
+			}
+			function rand(field){
+				ranges={
+					"year":[1897, 1979],
+					"month":[1, 12],
+					"day":[1, 30],
+					"article":[1, 50]
+				};
+				value = getRandomInt(ranges[field][0], ranges[field][1]);
+				if (field == "month" || field == "day"){
+					s_value = String(value).padStart(2, '0');
+				}
+				else {
+					s_value = String(value);
+				};
+
+				document.getElementById(field).innerHTML = s_value;
+			}
+			function getUrl(){
+				function getInner(id){
+					return document.getElementById(id).innerHTML
+				};
+
+				url =  "https://www.nli.org.il/en/newspapers/frw/" + getInner("year") + "/" + getInner("month") + "/" + getInner("day") + "/01/article/" + getInner("article")
+				document.getElementById("url").innerHTML = "<a href='" + url + "'>" + url + "</a>"
+			}
+		</script>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown="" data-separator="^\n---\n" data-separator-vertical="^\n--\n" data-charset="utf-8">
+					<script type="text/template">
+
+## Yiddish Digital Humanities
+### Some examples
+Jonah Lubin<!-- .element: style="font-size:0.8em;" -->
+
+--
+
+### TOC
+
+1. What are Digital humanities?
+	- Generally
+	- What are the forerunners of Yiddish DH?
+2. Project run\-down
+
+	- [Mapping Yiddish Publishing](https://sreyfe.github.io/mapping_yiddish_publishing/)
+	- [Random Forverts bot](https://x.com/random_forverts)
+	- [YiDraCor](https://dracor.org/yi)
+3. [iberz: a database of Yiddish translations](http://iberz.org)
+
+---
+
+### 1. What are Digital humanities?
+- Like "Comparative Literature," an anxiogenic term
+	- a la René Wellek
+- A very broad term for many approaches
+- Many ways to answer, hence [What Is Digital Humanities](https://whatisdigitalhumanities.com/)
+
+--
+
+### Digital, digitized, and numerical humanities, according to Roth
+
+- <em>Digitized humanities</em>: emphasizes the constitution, management, and processing of digitized archives
+- <em>Numerical humanities</em>: emphasizes mathematical abstraction and the development of numerical and formal models
+- <em>Humanities of the digital</em>: emphasizes computer-mediated interactions and online communities
+
+<small>cf. Camille Roth: Digital, digitized, and numerical humanities. In: Digital Scholarship in the Humanities 34.3 (2019), S. 616–632. ([doi:10.1093/llc/fqy057](https://doi.org/10.1093/llc/fqy057))</small>
+
+--
+### Three Sphere Model
+
+![Sahle](images/Patrick_Sahle_-_Mapping_DH_de.png)<!-- .element height="450px;" -->
+<small>Model (first published 2013, updated 2021) by Patrick Sahle, Bergische Universität Wuppertal.</small>
+
+--
+
+- What interests me most is Computational Literary Studies (CLS)
+	- aforemention digitized and numerical humanities
+	- Humanistic study with digital tools
+	- as opposed to the humanistic study of digital content
+
+--
+### DH according to Krämer
+- Krämer argues that DH is not in the hermeneutic tradition of the humanities, but in the diagrammatic
+- Wants to deprivilege hermaneutics and interpretation as "the royal road and gateway of traditional humanities"
+- Instead, emphasizes 'cultural technique of flattening'
+	- the projection of complex relations onto an artificial flatness
+
+--
+Krämer seeks a numerical heritage for the humanities in the
+
+"the dating of letters, books, and documents, of designing catalogs of works, concordances, and keyword indexes." (Krämer)
+
+<small>“Should We Really ‘Hermeneutise’ the Digital Humanities? A Plea for the Epistemic Productivity of a ‘Cultural Technique of Flattening’ in the Humanities. | Published in Journal of Cultural Analytics.”</small>
+
+--
+she writes:
+
+"Alphabetically structured corpora of information make knowledge intersubjectively addressable and accessible: encyclopedia, lexicons, dictionaries, but also library catalogs, concordances, and keyword indexes as well as the private note boxes of scholarly work utilize the epistemic functions of alphabetical sorting. The alphanumeric draws on artificial flatness." (Krämer)
+
+--
+### Keyword indexes
+![scholem](images/index.png)<!-- .element height="450px;" -->
+
+--
+
+### Dictionairies
+![bdb](images/bdb.jpg)<!-- .element height="450px;" -->
+
+--
+
+### Bibliographies
+
+![bashevis bib](images/bashevis_bib.jpg)<!-- .element height="450px;" -->
+
+---
+
+### So what are Yiddish digital humanities?
+	- How can we construct a genealogy?
+
+--
+
+### The lexicographic tradition, for one
+![lexicography](images/lexicography.png)<!-- .element height="450px;" -->
+
+--
+
+Ex. 1: Stutchkoff's <em>Oytser</em>
+![oytser](images/oytser.png)<!-- .element height="600px;" -->
+
+--
+- Stutchkoff: actor, playwright, composer, lexicographer
+- In 1931 he published a rhyming dictionary for Yiddish (ייִדישער גראַמען־לעקסיקאָן)
+- best known for the <em>Oytser</em>, published in 1950 and edited by the Yiddish linguist Max Weinreich
+- 930 pages, 620 semantic fields
+	- from זײַן (being) to געבעטהױז (ניט ייִדיש) (house of prayer, non-Jewish)
+
+--
+### An attempt to flatten Yiddish semantics into a single book
+#### But also, perhaps, to create an automaton -- a paper machine that knows the language and can transmit it
+##### A paper golem, if we may be so bold???
+
+--
+#### Questions of encoding
+- the <em>Oytser</em> wants to compress all of Yiddish, but it is also a prescriptive work
+- the editors have a concept of a <em>kulturshprakh</em>
+	- international standard of Yiddish communication
+
+--
+#### Deviations
+
+- ↓ (not recommended in the kulturshprakh)
+- ° (not (yet) accepted in the kulturshprakh, mostly Slavic words)
+- \* (vulgar expression)
+- number of acronyms denoting proscribed origins 
+	- e.g. [אמ] for Americanisms (which they oppose), [קל] for Klezmer-loshn
+
+--
+#### Encoded language planning
+- In their intro, write about the encoding
+- After the Holocaust, there is no possibility of Slavic languages "flooding" Yiddish, so they are to be used as an element for the "enrichment" of Yiddish
+- Whereas English is too dangerous, threatens to overwhelm Yiddish entirely
+
+--
+
+e.g.
+
+![oytser](images/instruments.png)<!-- .element height="500px;" -->
+
+--
+Interesting insights come from attending to the flattening of the Yiddish language
+
+Perhaps most interesting: what was not allowed to be completely flattened? What had to be kept apart?
+
+---
+
+Ex. 2: Kotik's <em>Zhargonnyy Chitatel</em>
+
+![zharg chitat](images/zharg.png)<!-- .element height="400px;" -->
+
+<small>Cohen, Nathan. Yiddish Transformed: Reading Habits in the Russian Empire, 1860-1914. Translated by Rebecca Wolpe. New York, NY: Berghahn Books, 2023, 79</small>
+
+--
+
+#### Avrom Kotik
+- Born ~1868 near Grodno, died in 1933
+- Devoted socialist
+- Scholar of Yiddish reading
+- "He took an interest in the reading habits of those same Jews and dedicated many years of his life to widening the variety of what he considered quality Yiddish books and making them accessible." (Cohen, 76)
+<br><br>
+<small>All information on Kotik taken from Cohen's amazing <em>Yiddish Transformed</em>
+
+--
+#### Жаргонный читатель и его характеристика (The Jargon Reader and his Characteristics), 1902
+- A study of Yiddish reading habits, including statistical study of a "provincial library"
+	- Published in Еврейский Ежегодник, 1902, Saint Petersburg
+
+--
+#### Most popular authors
+
+![zharg chitat](images/zharg.png)<!-- .element height="400px;" -->
+
+--
+#### Popularity of scientific literature
+![zharg sci](images/zharg_sci.png)<!-- .element height="400px;" -->
+
+---
+#### 🚨 lehavdil alert 🚨
+
+--
+Ex. 3? Flattening in the Hebrew Bible?
+
+![Joshua 12:9-24](images/joshua_leningrad.png)<!-- .element height="500px;" -->
+
+<small>Joshua 12:9-24</small>
+
+--
+
+But this takes us too far afield...
+
+---
+### 2. Some projects of mine
+
+![projects](images/projects.png)<!-- .element height="500px;" -->
+
+--
+#### Mapping Yiddish Publishing
+
+![mapping yiddish publishing](images/mapping_yiddish_publishing.png)<!-- .element height="500px;" -->
+
+--
+#### Mapping Yiddish Publishing
+
+- [Temporal map of Yiddish publishing](https://sreyfe.github.io/mapping_yiddish_publishing/)
+	- Made from the digital collection of the Yiddish Book Center (13,000 items, not all of them books)
+
+--
+#### Technical details
+- Written in JavaScript with [Leaflet](https://leafletjs.com/), an open source JS library for interactive maps
+- Data acquired via [archive.org's advanced search](https://archive.org/advancedsearch.php)
+	- (might still be down)
+	- You can use it to download a lot of data in a format like CSV or JSON
+- Data then cleaned using [OpenRefine](https://openrefine.org/)
+	- e.g. Varshe, Warsche, Warszawa → Warsaw
+- Hosted on GitHub pages
+	- [Code here](https://github.com/sreyfe/mapping_yiddish_publishing)
+
+--
+#### Random Forverts bot
+
+![random forverts bot](images/random_forverts.png)<!-- .element height="500px;" -->
+
+--
+#### Random Forverts bot
+- [X (Twitter) bot](https://x.com/random_forverts) which posts a random article from the [NLI's digitized Forverts](https://www.nli.org.il/en/newspapers/frw/) every hour
+
+- Also a [BlueSky version](https://bsky.app/profile/randomforverts.bsky.social) in the works!
+
+--
+#### Technical details
+- Hosted on DigitalOcean
+	- would prefer GitHub pages, but you need a server for this
+- NLI has an API, but it doesn't give access to their newspaper collection
+- But what they do have is a nice way of accessing individual articles using dates
+	- https://www.nli.org.il/en/newspapers/frw/<em>year</em>/<em>month</em>/<em>day</em>/01/article/<em>article</em>
+	- https://www.nli.org.il/en/newspapers/frw/1947/09/14/01/article/6
+
+--
+#### Technical details
+- So 
+
+--
+		<table>
+			<tr>
+				<th>Year</th>
+				<th>Month</th>
+				<th>Day</th>
+				<th>Article</th>
+			</tr>
+			<tr>
+				<td id="year">&nbsp; </td>
+				<td id="month"></td>
+				<td id="day"></td>
+				<td id="article"></td>
+			</tr>
+			<tr>
+				<td><button type="button" onclick="rand('year')">🎲</button></td>
+				<td><button type="button" onclick="rand('month')">🎲</button></td>
+				<td><button type="button" onclick="rand('day')">🎲</button></td>
+				<td><button type="button" onclick="rand('article')">🎲</button></td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td><button type="button" onclick="getUrl()">Get URL</button></td>
+			</tr>
+			<tr>
+				<td id="url">https://www.nli.org.il/en/newspapers/frw/<em>year</em>/<em>month</em>/<em>day</em>/01/article/<em>article</em></td>
+				</tr>
+		</table>
+
+--
+
+
+					</script>
+				</section>
+			</div>
+		</div>
+
+		<script src="../revealjs/dist/reveal.js"></script>
+		<script src="../revealjs/plugin/notes/notes.js"></script>
+		<script src="../revealjs/plugin/markdown/markdown.js"></script>
+		<script src="../revealjs/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

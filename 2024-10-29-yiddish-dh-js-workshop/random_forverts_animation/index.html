@@ -1,0 +1,64 @@
+<html>
+	<head>
+
+		<script>
+			function getRandomInt(min, max) {
+				return Math.floor(Math.random() * (max - min)) + min;
+			}
+			function rand(field){
+				ranges={
+					"year":[1897, 1979],
+					"month":[1, 12],
+					"day":[1, 30],
+					"article":[1, 50]
+				};
+				value = getRandomInt(ranges[field][0], ranges[field][1]);
+				if (field == "month" || field == "day"){
+					s_value = String(value).padStart(2, '0');
+				}
+				else {
+					s_value = String(value);
+				};
+
+				document.getElementById(field).innerHTML = s_value;
+			}
+			function getUrl(){
+				function getInner(id){
+					return document.getElementById(id).innerHTML
+				};
+
+				url =  "https://www.nli.org.il/en/newspapers/frw/" + getInner("year") + "/" + getInner("month") + "/" + getInner("day") + "/01/article/" + getInner("article")
+				document.getElementById("url").innerHTML = "<a href='" + url + "'>" + url + "</a>"
+			}
+		</script>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<th>Year</th>
+				<th>Month</th>
+				<th>Day</th>
+				<th>Article</th>
+			</tr>
+			<tr>
+				<td id="year">&nbsp; </td>
+				<td id="month"></td>
+				<td id="day"></td>
+				<td id="article"></td>
+			</tr>
+			<tr>
+				<td><button type="button" onclick="rand('year')">🎲</button></td>
+				<td><button type="button" onclick="rand('month')">🎲</button></td>
+				<td><button type="button" onclick="rand('day')">🎲</button></td>
+				<td><button type="button" onclick="rand('article')">🎲</button></td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td><button type="button" onclick="getUrl()">Get URL</button></td>
+				<td id="url"></td>
+			</tr>
+		</table>
+
+	</body>
+</html>
