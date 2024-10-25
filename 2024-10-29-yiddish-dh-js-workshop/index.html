@@ -90,7 +90,7 @@ Jonah Lubin<!-- .element: style="font-size:0.8em;" -->
 ### Three Sphere Model
 
 ![Sahle](images/Patrick_Sahle_-_Mapping_DH_de.png)<!-- .element height="450px;" -->
-<small>Model (first published 2013, updated 2021) by Patrick Sahle, Bergische Universität Wuppertal.</small>
+<small>Model (first published 2013, updated 2021) by Patrick Sahle, Bergische Universität Wuppertal. This and previous slide stolen from [Frank Fischer](https://lehkost.github.io/slides/2023-04-20-einf-dh/#/1/3).</small>
 
 --
 
@@ -271,6 +271,14 @@ But this takes us too far afield...
 ![random forverts bot](images/random_forverts.png)<!-- .element height="500px;" -->
 
 --
+#### What is this for?
+
+- Geographic reading of the Yiddish Book Center's data
+- A flattening of Yiddish literature, a projection onto the world map
+- Emphasizes places that might otherwise be lost
+	- e.g. Buenos Aires production post-War
+
+---
 #### Random Forverts bot
 - [X (Twitter) bot](https://x.com/random_forverts) which posts a random article from the [NLI's digitized Forverts](https://www.nli.org.il/en/newspapers/frw/) every hour
 
@@ -278,16 +286,16 @@ But this takes us too far afield...
 
 --
 #### Technical details
+- Python bot built with [Tweepy](https://www.tweepy.org/)
 - Hosted on DigitalOcean
 	- would prefer GitHub pages, but you need a server for this
 - NLI has an API, but it doesn't give access to their newspaper collection
-- But what they do have is a nice way of accessing individual articles using dates
-	- https://www.nli.org.il/en/newspapers/frw/<em>year</em>/<em>month</em>/<em>day</em>/01/article/<em>article</em>
-	- https://www.nli.org.il/en/newspapers/frw/1947/09/14/01/article/6
 
 --
 #### Technical details
-- So 
+- But what they do have is a nice way of accessing individual articles using dates
+	- https://www.nli.org.il/en/newspapers/frw/<em>year</em>/<em>month</em>/<em>day</em>/01/article/<em>article</em>
+	- https://www.nli.org.il/en/newspapers/frw/1947/09/14/01/article/6
 
 --
 		<table style="width: 60%">
@@ -320,6 +328,93 @@ But this takes us too far afield...
 		</table>
 
 --
+#### Technical details
+
+- In reality, we use a slightly different URL which gives us a PDF
+- Keep trying until we get one
+	- Sometimes the URL leads to an article that doesn't exist
+- The PDF is then converted to a PNG, then cropped, then posted
+
+--
+#### What is this for?
+
+- Basically, a fun way to read the archive
+- A means of stumbling upon Yiddish that might otherwise remain unread
+- Randomness is a powerful tool!
+
+---
+#### Yiddish Corpus for DraCor
+
+![yidracor](images/YiDraCor.png)<!-- .element height="500px;" -->
+
+--
+
+#### What is DraCor?
+
+![DraCor frontpage as of 5 October 2024](images/dracor-frontpage-2024-10-05.png)
+
+- Short for *drama corpora*, a growing collection of plays in (mostly) European languages, all encoded in TEI. 
+- As of now, 25 DraCor corpora in 19 languages, almost 4,000 plays.
+- DraCor also provides an interface for research into European drama from Greek antiquity to the 20th century.
+- check it out: [**dracor.org**](https://dracor.org/)
+
+<!-- .element: style="font-size:0.7em;" -->
+
+--
+
+#### YiDraCor
+
+![yidracor plays](images/YiDraCor_plays.png)<!-- .element height="500px;" -->
+
+--
+#### TEI
+
+![tei](images/TEI.png)<!-- .element height="500px" -->
+
+--
+#### Pipeline
+1. OCR scans of plays
+2. Correct OCR
+3. Mark plaintext up with [ezdrama](https://github.com/dracor-org/ezdrama)
+4. Out comes a TEI-encoded play!
+
+--
+
+#### Cool metrics
+![yudale](images/YiDraCor.png)<!-- .element height="500px;" -->
+
+--
+#### Cool metrics cont.
+![speech distributions](images/metrics.png)<!-- .element height="500px;" -->
+
+--
+#### Full texts available
+![full text](images/full_text.png)<!-- .element height="500px;" -->
+
+--
+#### As well as other formats
+![other formats](images/other_data.png)<!-- .element height="500px;" -->
+
+--
+#### But at its core, DraCor is not a website
+- It is a programmable corpus, at its most powerful when interfaced via its API
+	- API being a protocol by means of which particular data can be queried
+
+--
+#### API
+![api](images/api.png)
+
+--
+#### What is this for?
+
+- In 2024, DraCor has been used to
+	- [sketch the scheming slave in Roman comedy](https://doi.org/10.48694/jcls.3670)
+	- [investigate the German one-act play](https://doi.org/10.1515/9783111334059)
+	- [analyze text reuse in theater of the Spanish Siglo de Oro](https://doi.org/10.13035/H.2024.12.01.10)
+
+- Hopefully, more from YiDraCor soon!
+
+
 
 
 					</script>
