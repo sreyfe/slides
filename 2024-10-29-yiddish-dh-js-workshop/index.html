@@ -265,10 +265,6 @@ But this takes us too far afield...
 - Hosted on GitHub pages
 	- [Code here](https://github.com/sreyfe/mapping_yiddish_publishing)
 
---
-#### Random Forverts bot
-
-![random forverts bot](images/random_forverts.png)<!-- .element height="500px;" -->
 
 --
 #### What is this for?
@@ -280,16 +276,24 @@ But this takes us too far afield...
 
 ---
 #### Random Forverts bot
+
+![random forverts bot](images/random_forverts.png)<!-- .element height="500px;" -->
+
+--
+
+#### Random Forverts bot
 - [X (Twitter) bot](https://x.com/random_forverts) which posts a random article from the [NLI's digitized Forverts](https://www.nli.org.il/en/newspapers/frw/) every hour
 
 - Also a [BlueSky version](https://bsky.app/profile/randomforverts.bsky.social) in the works!
 
 --
+
 #### Technical details
 - Python bot built with [Tweepy](https://www.tweepy.org/)
 - Hosted on DigitalOcean
 	- would prefer GitHub pages, but you need a server for this
 - NLI has an API, but it doesn't give access to their newspaper collection
+
 
 --
 #### Technical details
@@ -414,6 +418,246 @@ But this takes us too far afield...
 
 - Hopefully, more from YiDraCor soon!
 
+
+---
+### 3. [iberz.org](https://iberz.org/)
+![iberz](images/iberz.png)
+
+--
+#### What is iberz?
+
+- Database of translations into Yiddish
+- Over 1,300 translations
+	- texts from the Yiddish Book Center
+- Over 1,200 source texts
+- 34 different languages
+- 814 authors
+- 763 translators
+
+--
+#### [Let's take a look](https://iberz.org/)
+
+![iberz](images/iberz.png)
+
+--
+#### Technical details
+
+- data in two YAML files ([here](https://github.com/sreyfe/iberz_data))
+	- one for translations, the other for source texts
+- hosted on GitHub pages
+- site constructed using [Jekyll](https://jekyllrb.com/) 
+	- static site generator
+	- with plugin [jekyll-datapage_gen](https://github.com/avillafiorita/jekyll-datapage_gen)
+		- allows pages to be created with data in serialized format (JSON, YAML in my case)
+
+--
+#### From these:
+![meyrink yaml](images/meyrink_yaml.png)
+
+--
+### To these:
+![meyrink iberz](images/meyrink_iberz.png)
+
+--
+
+#### Motivation
+- Yiddish translations are often inconsistently cataloged, or not at all
+	- Generally with Yiddish, lots of data, not so much metadata!
+- Goal: make a central repository with structured bibliographic metadata for translations into Yiddish
+
+--
+#### Process
+
+- First step: manual annotation of the Yiddish Book Center's data
+	- as taken from the Internet Archive
+	- first round binary: whether or not likely translation
+	- second round: annotation with other data
+
+--
+
+![spreadsheet](images/iberz_spreadsheet.png)<!-- .element height="500px;" -->
+
+--
+#### What is a translation?
+
+- I don't know!
+	- very tricky theoretical territory
+	- line between translation and adaptation?
+- Don't want to have to decide
+
+--
+#### Instead, a heuristic: Toury's "assumed translation"
+<br>
+
+<small>"any target-culture [in this case, Yiddish] text for which there are reasons to tentatively posit the existence of another text, in another culture/language, from which it was presumably derived by transfer operations and to which it is now tied by a set of relationships based on shared features, some of which may be regarded -- within the culture in question -- as necessary and/or sufficient."</small>
+<br>
+<br>
+<br>
+<small>Toury, Gideon. Descriptive Translation Studies – and Beyond. Btl.100. John Benjamins Publishing Company. Accessed October 13, 2023. https://benjamins.com/catalog/btl.100, 26.</small>
+
+--
+
+#### Processs
+
+- This provides room for the wide range of translational activity by which Yiddish texts were derived from other texts
+- Means that the method for creating the corpus was trying to find evidence of another text "from which it was presumably derived"
+
+--
+
+#### Sometimes easy
+
+|<em>Madam Bovari fun Gustav Flober</em>|<em>Tevye der milkhiker fun Sholem Aleykhem</em>|
+|---------------------------------------|------------------------------------------------|
+|![bovari](images/bovari.jpg)<!-- .element height="400px;" -->|![tevye](images/tevye.jpg)<!-- .element height="400px;" -->|
+
+--
+#### Usually harder
+- hopefully YBC is up tomorrow so I can add slides!
+
+--
+#### Most useful methods
+- if author's name is present, finding bibliographies
+	- often the name isn't present
+- translating and googling passages
+- googling character names
+	- especially in Russian!
+		- since there's more Russian on the internet than Yiddish, and Russian also uses phonetic transcription of names
+
+---
+#### What is this for?
+
+- It is a bibliographical resource for all to use
+- It lets us produce very interesting diagrams which tell us about the history of translation into Yiddish
+- Its construction reveals secrets...
+
+--
+#### Example: what languages have been translated into Yiddish?
+
+- 34 in the database
+- <small>Russian (553 volumes), German (371),
+English (253), Hebrew (226), French (226), Polish (77), Danish (40), Norwegian (36),
+Aramaic (33), Swedish (21), Italian (20), Spanish (18), Ukrainian (15), Greek (8), Dutch
+(8), Arabic (6), Belorussian (4), Romanian (4), Latin (4), Portuguese (3), Lithuanian (3),
+Judao-Arabic (3), Czech (3), Bengali (3), Judaeo-German (2), Latvian (2), Japanese (2),
+Hungarian (1), Sanskrit (1), Chinese (1), Georgian (1), Neapolitan (1), Farsi (1), Finnish
+(1)</small>
+
+--
+
+#### Top languages (synchronic)
+![source languages](images/source_languages_by_number_of_volumes.png)
+
+--
+#### But these change over time
+
+![languages diachronic](images/popularity_of_top_5_languages.png)
+
+--
+#### Similar patterns in places of publication
+
+![places diachronic](images/popularity_of_top_5_places.png)
+
+--
+#### Summary of figures
+- Saddle points around the World Wars
+- Catastrophe leads to reorganization of Yiddish translation
+	- 1. New York, German
+	- 2. Warsaw, Russian
+	- 3. Buenos Aires, Hebrew
+
+--
+#### Lead to interesting questions, for example:
+- Why does French translation increase steadily (but differently from Russian) in the interwar period?
+- Why is this line so similar to the steady increase of Vilne during this period?
+
+--
+#### Questions
+- Increase of French can be linked with Mark Rakovski, who translated a lot of French during the interwar period
+	- had his own press
+	- translated/published Flaubert (cf. Bovary above) Barbusse, Istrati, and Prevost
+	- continued translating after WWII, two translations for <em>Yidish bukh</em>, neither in French
+
+--
+#### Questions
+- Can this be linked to the rise of Vilne?
+	- not immediately, since he published in Warsaw
+	- much to consider...
+
+--
+#### Annotation process generates questions
+
+- Annotation is not only a means to an end
+	- end: some hypothetical state where you've perfectly captured everything
+	- instead, it's an engine for textual discovery
+- Precisely where annotation breaks down, this is where the most interesting things are found
+
+--
+#### Example: [Paskarella](https://iberz.org/id/ytd001076/) by Boccaccio(?)
+
+![paskarella](images/paskarella.png)<!-- .element height="450px;" -->
+
+--
+#### Example: Paskarella by Boccaccio(?)
+- Published in 1899 by B. Rabinovitts in New York
+- Translated (or "<em>baarbet</em>," i.e. "adapted") by D. M. Hermalin
+	- Exceedingly prolific translator/adapter
+	- Popular in Kotik's provincial library
+- Does not correspond to anything in Boccaccio's oeuvre
+	- Nor does another supposed Boccaccio work: [<em>Madam babeta</em>](https://iberz.org/id/ytd000109/)
+
+--
+And yet they reappear in a 1927 English edition, published by Samuel Roth
+
+![english paskarella](images/02-pasquerella-and-madonna-babetta.jpg)<!-- .element height="450px;" -->
+
+--
+#### Samuel Roth
+![roth](images/roth.jpg)<!-- .element height="200px;" -->
+- American publisher, born in Galicia in 1893
+- Went to jail in the 1930's for pornography distribution
+- Best known for publishing <em>Ulysses</em> without Joyce's consent
+
+--
+#### Samuel Roth
+- Produced/published phony translations like:
+	- 1941: <em>I Was Hitler’s Doctor</em>
+	- 1951: <em>My Sister and I</em>, supposedly a lost work by Nietzsche
+- It seems he turned to Yiddish popular literature, selected a pseudotranslation of Boccaccio, and once more passed it off as the genuine article
+
+--
+#### Doesn't necessary fit well into the annotation scheme
+
+![paskarella iberz](images/paskarella_iberz.png)<!-- .element height="450px;" -->
+
+--
+#### How are anomalies annotated?
+
+- With notes (as above)
+- Also with keywords
+	- not yet implemented on the front end
+
+--
+#### Keywords: <em>false attribution</em> and <em>probable pseudotranslation</em>
+
+- Nine in total in the database
+	- Including a misattribution of Mayne-Reid (as Verne), and an invented Tolstoy
+	- Eight of which were published before WWI
+	- Five of which were published by the infamous <em>Hebrew Publishing Company</em>
+
+--
+- This suggests certain translational practices prevalent in this era, and in particular by this publisher
+	- Very adaptive translational norm
+	- Borne out in close reading
+		- e.g. a Verne translation (<em>Di ferlorene shif</em>, Tanenboym)
+			- significantly expands chapter on Australia for political reasons
+
+--
+### Elliptical reading
+- Moving back and forth between the close and the distant
+	- using the movement to produce a deeper image of the subject
+
+---
+# Thank you!
 
 
 
