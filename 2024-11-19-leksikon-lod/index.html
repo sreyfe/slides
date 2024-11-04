@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Leksikon LOD</title>
+
+		<link rel="stylesheet" href="../revealjs/dist/reset.css">
+		<link rel="stylesheet" href="../revealjs/dist/reveal.css">
+		<link rel="stylesheet" href="../revealjs/dist/theme/serif.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../revealjs/plugin/highlight/monokai.css">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown="" data-separator="^\n---\n" data-separator-vertical="^\n--\n" data-charset="utf-8">
+					<script type="text/template">
+Pipeline
+
+--
+
+#### Source
+- <em>Leksikon fun der nayer yidisher literatur</em> (Biographical Dictionary of Modern Jewish Literature)
+	- published by Congress for Jewish Culture between 1956 and 1981
+	- translated by Josh Fogel
+		- first published on [Blogspot](https://web.archive.org/web/20180507060624/http://yleksikon.blogspot.ca/)
+		- Now on the Congress for [Jewish Culture website](https://congressforjewishculture.org/lexicon)
+
+--
+#### Source
+- Each page of the blog is a translated biographical entry of a Jewish (primarily Yiddish) cultural actor
+![lateiner](images/lateiner.png)<!-- .element height="450px;" -->
+
+--
+
+#### Scraping
+- Blogspot was scraped in October, 2023
+	- now no longer accesible
+- 5,807 biographies scraped
+
+--
+
+#### Entity linking
+- First five sentences of each entry were fed to [Relik](https://github.com/SapienzaNLP/relik)
+	- Project of Sapienza NLP
+	- dedicated to fast and efficient entity linking and relation extraction
+- Uses a Wikipedia knowledge base
+- Motivation: to see how many of the people in the <em>Leksikon</em> could be identified on Wikipedia
+
+--
+
+#### Entity linking
+- Potential candidates are produced by Relik
+- These are then evaluated against the name of the subject in order to see if it is a potential match
+	- fuzzy Token Sort Ratio
+	- if score above 80, they are selected
+- Then these potential matches are manually evaluated
+
+--
+
+#### Results
+- With this method, we have identified 117 out of 5,807 bibliographies
+- This would imply that few of these people are present on Wikipedia
+					</script>
+				</section>
+			</div>
+		</div>
+
+		<script src="../revealjs/dist/reveal.js"></script>
+		<script src="../revealjs/plugin/notes/notes.js"></script>
+		<script src="../revealjs/plugin/markdown/markdown.js"></script>
+		<script src="../revealjs/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
