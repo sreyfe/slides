@@ -22,13 +22,22 @@
 
 
 ### From Leksikon to LOD: Towards Biographical Information Extraction 
-Jonah Lubin, Marco Antonio Stranisci<!-- .element: style="font-size:0.8em;" -->
+#### A progress report
+Jonah Lubin (Harvard University), Marco Antonio Stranisci (University of Turin)<!-- .element: style="font-size:0.8em;" -->
 
 ---
+### Table of Contents
+- Motivation
+- Part I: How can we quantify the underrepresentation of Yiddish intellectuals on the internet?
+	- "The philosophers have only interpreted the world, in various ways..."
+- Part II: How can we improve the situation?
+	- "...the point is to change it."
+
+--
 
 #### Motivation
 
-Any Yiddish scholar can tell you: Yiddish cultural workers are underrepresented on the internet.
+Any Yiddish scholar can tell you: Yiddish people/places/things are underrepresented on the internet.
 
 --
 
@@ -37,46 +46,71 @@ We wanted to work on two things:
 2. Help to correct for it		
 
 --
+#### Part I: How can we quantify this underrepresentation?
 
-- But the problem is:
+--
+
+#### General idea:
+
+- What percentage of the total number of Yiddish intellectuals is represented on the internet?
+	- Intractable problem
+- Easier question: from a definite corpus of Yiddish intellectuals, how many are on Wikipedia?
+
+--
+
+- But resources are limited, since:
 	- Yiddish NLP tools are relatively poor
 		- OCR is bad compared to other languages
 	- and most comprehensive biographical sources for Yiddish writers etc. are in Yiddish
+	- So what corpus can we use to check the represantation of Yiddish writers on Wikipedia?
 
 --
+#### The Solution
+
+- <em>Leksikon fun der nayer yidisher literatur</em>, translated by Josh Fogel
+	- first published on [Blogspot](https://web.archive.org/web/20180507060624/http://yleksikon.blogspot.ca/)
+	- Now on the Congress for [Jewish Culture website](https://congressforjewishculture.org/lexicon)
+
+![lexicon](images/lexicon.png)<!-- .element height="350px;" -->
+
+--
+
 
 #### The Solution 
 
 - <em>Leksikon fun der nayer yidisher literatur</em> (Biographical Dictionary of Modern Jewish Literature)
-	- published by Congress for Jewish Culture between 1956 and 1981
+	- Published by Congress for Jewish Culture between 1956 and 1981
+	- Eight volumes of Yiddish biographies
 
-![leksikon](images/leksikon.jpg)<!-- .element height="350px;" -->
-
---
-
-- translation by Josh Fogel
-	- first published on [Blogspot](https://web.archive.org/web/20180507060624/http://yleksikon.blogspot.ca/)
-	- Now on the Congress for [Jewish Culture website](https://congressforjewishculture.org/lexicon)
+![leksikon](images/leksikon.jpg)<!-- .element height="250px;" -->
 
 --
 - Each page of the blog is a translated biographical entry of a Jewish (primarily Yiddish) cultural actor
 ![lateiner](images/lateiner.png)<!-- .element height="450px;" -->
 
 --
+- Widely used, important resource
+- Helps bring attention to understudied people
+	- e.g. Urke Nachalnik
 
-#### Scraping
-- Blogspot was scraped in October, 2023
-	- now no longer accesible
-- 5,807 biographies scraped
+
+![urke](images/urke.jpg)<!-- .element height="250px;" -->
 
 ---
 
-#### First question: how bad is the underrepresentation?
-
-- How many of the people in the <em>Leksikon</em> could be identified on Wikipedia?
+#### New question:
+- What percentage of the biographies from the <em>Leksikon</em> are present on Wikipedia?
 
 --
-#### Let's use Relik!
+
+#### First, we scrape
+- Blogspot of the <em>Leksikon</em> was scraped in October, 2023
+	- now no longer accessible
+- 5,807 biographies scraped
+
+--
+
+#### Then we use Relik
 [![relik](images/relik.png)](https://github.com/SapienzaNLP/relik)
 
 --
@@ -86,12 +120,11 @@ We wanted to work on two things:
 
 --
 #### Entity linking
-- Feed Relik first five sentences of each entry
-	- get potential candidates
-- which are then evaluated against the name of the subject in order to see if it is a potential match
-	- fuzzy Token Sort Ratio
-	- if score above 80, they are selected
-- Then these potential matches are manually evaluated
+
+- Use Relik's entity linking to match <em>Leksikon</em> people with Wikipedia entries
+1. Feed Relik first five sentences of each entry
+2. Extract potential candidates
+3. Manually evaluate
 
 --
 #### Example input
@@ -114,7 +147,7 @@ Born in Kutne (Kutno), Poland, according to his birth certificate—it was Janua
 Poland, Kutno, Sholem Asch, Edwin B. Astwood, Mútne, Polish People's Republic, Mutne, Olesno, National People's Union, Kutkh, Kutno County, Nur-Sultan, Tosno, Grodno, Sittwe, Ashmyany, Bełtno, Second Polish Republic, Kupiansk, Kotka, Dubno, Kutka, Kutscha family, Rottne, Poles, Klement Gottwald, Poświętne, Opoczno County, Antonín Novotný, Opole, Vitki, Talne, Opatów, Jatne, Ketsch, Lviv, Mežotne, Herbert Kutscha, Kutno railway station, Cross of Merit (Poland), Gomel, Karl-Josef Kutsch, Līgatne, William Astbury, Hans Vatne, Piotrków Trybunalski, Shtetl, Poświętne, Wołomin County, Sutno, Wrocław, Muczne, Sytno, Piet van Asch, AST (publisher), Kutsche, Kutná Hora, Poświętne, Białystok County, Kütke, Gottne, Kutkivtsi, Karl Ast, Tuczno, Temporary Commission of Confederated Independence Parties, Pryvitne, Kot, Sitno, Zamość County, Tutkowski, Kut-e Sheykh, Ratne, Kutkai, Kupiškis, Karl-Heinz Kutschke, Moeljatno, Leszno, Fred Astbury, Łopatno, Wojnicz, Ustka, Opoczno, Polish–Lithuanian Commonwealth, Vinnytsia, Kurzawa, Congress Poland, Polish language, Birth certificate, Pałuki, Łask, Kútniky, Herbert Nitsch, Order of Klement Gottwald, Aš, Jilemnice, John W. Dutko, Krasny Kut, Saratov Oblast, Ali Asghar Kutki, Kutsenko, Shchuchyn, Locarno, Stanisław Kot, Berezne, Motnik<!-- .element: style="text-align:justify;font-size:0.6em;" -->
 
 --
-#### Fuzzy search
+#### Fuzzy matching
 <p>
 Poland :  19<br>
 Kutno :  10<br>
@@ -128,18 +161,20 @@ etc. etc.
 --
 
 #### Results
-- With this method, we have identified 117 out of 5,807 bibliographies
-- This would imply that few of these people are present on Wikipedia
+- With this method, we have identified 117 Wikipedia for the of 5,807 bibliographies
+	- ca. 2%
+- This implies that few people in the <em>Leksikon</em> are present on Wikipedia
 
 --
 
 - There are indeed problems with the fuzzy search
-- But even if this method captures only 1/10th of the people on Wikipedia,
+	- Anyone have a better idea?
+- Nonetheless, even if this method only captured 1/10th of the <em>Leksikon</em> people represented on Wikipedia,
 there are still thousands of entries from the <em>Leksikon</em> not on Wikipedia
 	- Serious knowledge gap
 
 ---
-#### Second question: how can we correct the underrepresentation?
+#### Part II: How can we correct the underrepresentation?
 
 --
 In the case of the Leksikon: how do we go from unstructured to structured biographical data?
@@ -150,25 +185,74 @@ Biographical event recognition, for one
 Stranisci, M. A., Damiano, R., Mensa, E., Patti, V., Radicioni, D., & Caselli, T. (2023, July). WikiBio: a Semantic Resource for the Intersectional Analysis of Biographical Events. In Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) (pp. 12370-12384).<!-- .element: style="text-align:justify;font-size:.7em" -->
 
 --
-#### Most popular events
+#### WikiBio
 
-![events](images/events.png)
+- biographical event recognition, by Stranisci et al.
+- used to create World Literature Knowledge Graph
+- investigate representation of "transnational" authors on Wikipedia:
 
---
-#### Event extraction to triplets
-- Would be good to be able to link these as predicates between subject and object
-	creating triplets for use in structured data
-- Many of these events are difficult to automatically interpret
-	- what are the objects for serve, remain, active, take part, etc.?
+![transnational](images/transnational.png)
 
 --
-#### Annotation for fine-tuning
-<b>IMAGE OF AEQUA TECH ANNOTATION PLATFORM HERE</b>
+
+#### WikiBio: Most popular events
+
+![events](images/events.png)<!-- .element height="450px;" -->
+
+--
+#### WikiBio: Problem
+
+- Only does event recognition
+- I.e. does not capture the object of a biographical triple
+	- Radvodzki <b>left</b> Lithuania
+
+--
+#### Then perhaps Relik?
+
+- Relation extraction!
+	- Captures full triplets
+- But doesn't capture what Wikipedia/WikiData does not already know
+	- Only uses WikiData properties
+	- Especially a problem with migrational predicates, since WikiData doesn't model this well
+
+--
+#### Solution:
+
+We need open information extraction in order not to reproduce the canonical topics/models.
+
+--
+#### In other words:
+
+- If we're not careful, models can be procrustean beds which reproduce normative structures
+
+![procrustes](images/procrus.jpg)
+
 
 ---
-TODO
+## Future work
 
-train a model to do biographical information extraction
+--
+
+#### Biographical open information extraction
+
+- Produce a model which extracts subject/predicate/object triplets independent of pre-existing ontologies
+- In order to do this:
+	- Annotated corpus of 1000 translated Yiddish biographies
+	- Especially focusing on tricky predicates (e.g. migration)
+
+--
+#### [aequa.tech]("https://aequa-tech.com/") annotation platform
+[![aequa](images/aequa.png)<!-- .element height="450px;" -->](https://label.aequa-tech.com/annotators/tasks/46/text_lines/4369)
+
+
+--
+#### Goals:
+- Event detection/relation extraction which escapes existing structures
+- Produce structured Yiddish biographical data which can be made accessible as Linked Open Data
+
+--
+
+Thanks!
 
 
 					</script>
