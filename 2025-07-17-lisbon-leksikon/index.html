@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Leksikon LOD Lisbon</title>
+
+		<link rel="stylesheet" href="../revealjs/dist/reset.css">
+		<link rel="stylesheet" href="../revealjs/dist/reveal.css">
+		<link rel="stylesheet" href="../revealjs/dist/theme/serif.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../revealjs/plugin/highlight/monokai.css">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown="" data-separator="^\n---\n" data-separator-vertical="^\n--\n" data-charset="utf-8">
+					<script type="text/template">
+
+
+### From Leksikon to LOD: Towards Biographical Information Extraction
+Jonah Lubin (Harvard University), Marco Antonio Stranisci (University of Turin)<!-- .element: style="font-size:0.8em;" -->
+
+---
+### Table of Contents
+- Motivation
+- Part I: How can we quantify the underrepresentation of Yiddish intellectuals on the internet?
+- Part II: How can we improve the situation?
+
+--
+
+#### Motivation
+
+Any Yiddish scholar can tell you: Yiddish people/places/things are underrepresented on the internet.
+
+--
+
+We wanted to work on two things:
+1. Quantify this underrepresentation
+2. Help to correct for it		
+
+--
+#### Part I: How can we quantify this underrepresentation?
+
+--
+
+#### General idea:
+
+- What percentage of the total number of Yiddish intellectuals is represented on the internet?
+	- Intractable problem
+- Easier question: from a definite corpus of Yiddish intellectuals, how many are on Wikipedia?
+
+--
+
+- But resources are limited, since:
+	- Yiddish NLP tools are relatively poor
+		- OCR is bad compared to other languages
+	- and most comprehensive biographical sources for Yiddish writers etc. are in Yiddish
+	- So what corpus can we use to check the represantation of Yiddish writers on Wikipedia?
+
+--
+#### The Solution
+
+- <em>Leksikon fun der nayer yidisher literatur</em>, translated by Josh Fogel
+	- first published on [Blogspot](https://web.archive.org/web/20180507060624/http://yleksikon.blogspot.ca/)
+	- Now on the Congress for [Jewish Culture website](https://congressforjewishculture.org/lexicon)
+
+![lexicon](images/lexicon.png)<!-- .element height="350px;" -->
+
+--
+
+
+#### The Solution 
+
+- <em>Leksikon fun der nayer yidisher literatur</em> (Biographical Dictionary of Modern Jewish Literature)
+	- Published by Congress for Jewish Culture between 1956 and 1981
+	- Eight volumes of Yiddish biographies
+
+![leksikon](images/leksikon.jpg)<!-- .element height="250px;" -->
+
+--
+![leksikon yid](images/leksikon_yid.png)<!-- .element height="600px;" -->
+
+--
+- Each page of the blog is a translated biographical entry of a Jewish (primarily Yiddish) cultural actor
+![lateiner](images/lateiner.png)<!-- .element height="450px;" -->
+
+--
+- Widely used, important resource
+- Helps bring attention to understudied people
+	- e.g. Urke Nachalnik
+
+
+![urke](images/urke.jpg)<!-- .element height="250px;" -->
+
+---
+
+#### New question:
+- What percentage of the biographies from the <em>Leksikon</em> are present on Wikipedia?
+
+--
+
+#### First, we scrape
+- Blogspot of the <em>Leksikon</em> was scraped in October, 2023
+	- now no longer accessible
+- 5,807 biographies scraped
+
+--
+
+#### Then we use Relik
+[![relik](images/relik.png)](https://github.com/SapienzaNLP/relik)
+
+--
+- Project of Sapienza NLP
+	- dedicated to fast and efficient entity linking and relation extraction
+- Uses a Wikipedia knowledge base
+
+--
+#### Entity linking
+
+- Use Relik's entity linking to match <em>Leksikon</em> people with Wikipedia entries
+1. Feed Relik first five sentences of each entry
+2. Extract potential candidates
+3. Manually evaluate
+
+--
+#### Example input
+
+Ash, Sholem
+November 1, 1880 – July 10, 1957
+
+Born in Kutne (Kutno), Poland, according to his birth certificate—it was January 1; according to his mother’s reckoning—four days after Passover. His father, Rabbi Moyshe Gombiner, came from a family of ritual slaughterers and was something of a scholar as well as a philanthropist. He did business in sheep and also ran a hotel. His mother, Malka, née Vidovski, the second wife of his father and much younger, came from a scholarly family in Lentshits (Łęczyca). He was raised at home “between two worlds”: on one side his full brothers—tall, healthy youngsters who did business with butchers and Gentiles and loved life’s adventures (they later moved to the United States and made their way there).<!-- .element: style="text-align:justify;font-size:0.6em;" -->
+
+--
+#### Example output
+
+![relik](images/relik_output.png)
+
+--
+#### Boiled down...
+```
+>>> ", ".join([c.to_dict()["text"] for c in p["relik"].candidates.span[0][0]])
+```
+Poland, Kutno, Sholem Asch, Edwin B. Astwood, Mútne, Polish People's Republic, Mutne, Olesno, National People's Union, Kutkh, Kutno County, Nur-Sultan, Tosno, Grodno, Sittwe, Ashmyany, Bełtno, Second Polish Republic, Kupiansk, Kotka, Dubno, Kutka, Kutscha family, Rottne, Poles, Klement Gottwald, Poświętne, Opoczno County, Antonín Novotný, Opole, Vitki, Talne, Opatów, Jatne, Ketsch, Lviv, Mežotne, Herbert Kutscha, Kutno railway station, Cross of Merit (Poland), Gomel, Karl-Josef Kutsch, Līgatne, William Astbury, Hans Vatne, Piotrków Trybunalski, Shtetl, Poświętne, Wołomin County, Sutno, Wrocław, Muczne, Sytno, Piet van Asch, AST (publisher), Kutsche, Kutná Hora, Poświętne, Białystok County, Kütke, Gottne, Kutkivtsi, Karl Ast, Tuczno, Temporary Commission of Confederated Independence Parties, Pryvitne, Kot, Sitno, Zamość County, Tutkowski, Kut-e Sheykh, Ratne, Kutkai, Kupiškis, Karl-Heinz Kutschke, Moeljatno, Leszno, Fred Astbury, Łopatno, Wojnicz, Ustka, Opoczno, Polish–Lithuanian Commonwealth, Vinnytsia, Kurzawa, Congress Poland, Polish language, Birth certificate, Pałuki, Łask, Kútniky, Herbert Nitsch, Order of Klement Gottwald, Aš, Jilemnice, John W. Dutko, Krasny Kut, Saratov Oblast, Ali Asghar Kutki, Kutsenko, Shchuchyn, Locarno, Stanisław Kot, Berezne, Motnik<!-- .element: style="text-align:justify;font-size:0.6em;" -->
+
+--
+#### Fuzzy matching
+<p>
+Poland :  19<br>
+Kutno :  10<br>
+Sholem Asch :  85<br>
+Edwin B. Astwood :  33<br>
+Mútne :  11<br>
+Polish People's Republic :  26<br>
+etc. etc.
+</p><!-- .element: style="text-align:justify" -->
+
+--
+
+#### Results
+- With this method, we have identified 117 Wikipedia for the of 5,807 bibliographies
+	- ca. 2%
+- This implies that few people in the <em>Leksikon</em> are present on Wikipedia
+
+--
+
+- There are indeed problems with the fuzzy search
+	- Anyone have a better idea?
+- Nonetheless, even if this method only captured 1/10th of the <em>Leksikon</em> people represented on Wikipedia,
+there are still thousands of entries from the <em>Leksikon</em> not on Wikipedia
+	- Serious knowledge gap
+
+---
+#### Part II: How can we correct the underrepresentation?
+
+--
+In the case of the Leksikon: how do we go from unstructured to structured biographical data?
+
+--
+Maybe Relik?
+
+--
+
+#### Problem:
+
+- Relik captures relation extraction
+- But doesn't capture what Wikipedia/WikiData does not already know
+	- Only uses WikiData properties
+	- Especially a problem with migrational predicates, since WikiData doesn't model this well
+
+--
+### Open Information Extraction is better
+
+We'll use:
+Stranisci, M. A., Damiano, R., Mensa, E., Patti, V., Radicioni, D., & Caselli, T. (2023, July). WikiBio: a Semantic Resource for the Intersectional Analysis of Biographical Events. In Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) (pp. 12370-12384).<!-- .element: style="text-align:justify;font-size:.7em" -->
+
+--
+#### WikiBio
+
+- biographical event recognition, by Stranisci et al.
+- used to create World Literature Knowledge Graph
+- investigate representation of "transnational" authors on Wikipedia:
+
+![transnational](images/transnational.png)
+
+--
+
+#### WikiBio: Most popular events
+
+![events](images/events.png)<!-- .element height="450px;" -->
+
+--
+#### Good thing we didn't use Relik for this...
+
+We need open information extraction in order not to reproduce the canonical topics/models.
+
+--
+#### In other words:
+
+- If we're not careful, models can be procrustean beds which reproduce normative structures
+
+![procrustes](images/procrus.jpg)
+
+---
+#### After the extraction...
+
+Upload the triples to the triple store of the Univeristy of Torino<br>
+![sparql query](images/sparql_query.png)<!-- .element height="450px;" -->
+
+--
+#### Where we can query it
+
+![sparql table](images/sparql_table.png)<!-- .element height="450px;" -->
+
+--
+#### And browse it
+
+![nachalnik facet](images/nachalnik_facet.png)<!-- .element height="450px;" -->
+
+--
+### Demo knowledge graph for Yiddish writers
+
+- First of its kind
+- First time many of these figures have had structured data
+
+---
+## Future work
+
+- 1. Improve results with fine tuning
+- 2. Produce a more polished, more public knowledge graph
+
+--
+#### 1. Improve  results
+- We have begun annotatating using [aequa.tech]("https://aequa-tech.com/") annotation platform
+
+[![aequa](images/aequa.png)<!-- .element height="400px;" -->](https://label.aequa-tech.com/annotators/tasks/46/text_lines/4369)
+
+--
+- At the moment, 500 annotated biographies ([available here](https://github.com/sreyfe/yiddish_writers_graph/blob/main/yiddish_biographies_annotated.json))
+- More soon, then we can fine-tune the model
+
+--
+#### 2. Produce more polished/public knowledge graph
+- Once the results are better, use this as resource to improve Yiddish's standing in the LOD web
+
+--
+
+Thanks!
+
+
+					</script>
+				</section>
+			</div>
+		</div>
+
+		<script src="../revealjs/dist/reveal.js"></script>
+		<script src="../revealjs/plugin/notes/notes.js"></script>
+		<script src="../revealjs/plugin/markdown/markdown.js"></script>
+		<script src="../revealjs/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
