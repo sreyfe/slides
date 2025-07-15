@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Introducting iberz</title>
+		<title>Introducing iberz</title>
 
 		<link rel="stylesheet" href="../revealjs/dist/reset.css">
 		<link rel="stylesheet" href="../revealjs/dist/reveal.css">
@@ -16,7 +16,7 @@
 				<section data-markdown="" data-separator="^\n---\n" data-separator-vertical="^\n--\n" data-charset="utf-8">
 					<script type="text/template">
 ## Introducing <em>iberz</em>, a database of Yiddish translations
-Jonah Lubin, Frank Fischer<!-- .element: style="font-size:0.8em;" -->
+Jonah Lubin (Harvard University), Frank Fischer (Freie Universität Berlin)<!-- .element: style="font-size:0.8em;" -->
 
 --
 #### What is iberz?
@@ -30,7 +30,7 @@ Jonah Lubin, Frank Fischer<!-- .element: style="font-size:0.8em;" -->
 - 763 translators
 
 --
-#### Database + Web App
+#### Database + Web App ([iberz.org](https://iberz.org))
 
 [![iberz](images/iberz.png)](https://iberz.org/)
 
@@ -71,10 +71,7 @@ Jonah Lubin, Frank Fischer<!-- .element: style="font-size:0.8em;" -->
 #### Info combined on (fuzzy) search page
 ![bovari search page](images/search_page.png)
 
---
-
-
-
+---
 #### Motivation
 - Yiddish translations are often inconsistently cataloged, or not at all
 	- Generally with Yiddish, lots of data, not so much metadata!
@@ -85,15 +82,10 @@ Jonah Lubin, Frank Fischer<!-- .element: style="font-size:0.8em;" -->
 
 - First step: manual annotation of the Yiddish Book Center's data
 	- as taken from the Internet Archive
-	- first round binary: whether or not likely translation
-	- second round: annotation with other data
+- Identify translations
 
 --
-
-![spreadsheet](images/iberz_spreadsheet.png)<!-- .element height="500px;" -->
-
---
-#### What is a translation?
+#### But what is a translation?
 
 - I don't know!
 	- very tricky theoretical territory
@@ -121,7 +113,7 @@ Jonah Lubin, Frank Fischer<!-- .element: style="font-size:0.8em;" -->
 
 #### Sometimes easy
 
-|<em>Madam Bovari fun Gustav Flober</em>|<em>Tevye der milkhiker fun Sholem Aleykhem</em>|
+|<em>Madam Bovari</em>|<em>Tevye der milkhiker</em>|
 |---------------------------------------|------------------------------------------------|
 |![bovari](images/bovari.jpg)<!-- .element height="400px;" -->|![tevye](images/tevye.jpg)<!-- .element height="400px;" -->|
 
@@ -134,39 +126,28 @@ Jonah Lubin, Frank Fischer<!-- .element: style="font-size:0.8em;" -->
 
 --
 #### Most useful methods
-- if author's name is present, finding bibliographies
-	- often the name isn't present
 - translating and googling passages
 - googling character names
 	- especially in Russian!
 		- since there's more Russian on the internet than Yiddish, and Russian also uses phonetic transcription of names
 
 ---
-#### What is this for?
+#### What is <em>iberz</em>  for?
 
 - It is a bibliographical resource for all to use
-- It lets us produce very interesting diagrams which tell us about the history of translation into Yiddish
+- It lets us give numerical answers to questions about translation into Yiddish
 - Its construction reveals secrets...
 
 --
 #### Example: what languages have been translated into Yiddish?
 
-- 34 in the database
-- <small>Russian (553 volumes), German (371),
-English (253), Hebrew (226), French (226), Polish (77), Danish (40), Norwegian (36),
-Aramaic (33), Swedish (21), Italian (20), Spanish (18), Ukrainian (15), Greek (8), Dutch
-(8), Arabic (6), Belorussian (4), Romanian (4), Latin (4), Portuguese (3), Lithuanian (3),
-Judao-Arabic (3), Czech (3), Bengali (3), Judaeo-German (2), Latvian (2), Japanese (2),
-Hungarian (1), Sanskrit (1), Chinese (1), Georgian (1), Neapolitan (1), Farsi (1), Finnish
-(1)</small>
+- 29 in the database
+- <small>
+Russian (463), German (361), English (237), French (190), Hebrew (177), Polish (71), Danish (34), Norwegian (28), Italian (20), Swedish (18), Spanish (16), Ukrainian (13), Greek (7), Dutch (7), Arabic (6), Latin (4), Romanian (3), Portuguese (3), Czech (3), Judaeo-Arabic (3), Aramaic (2), Judaeo-German (2), Lithuanian (1), Hungarian (1), Sanskrit (1), Georgian (1), Belorussian (1), Neapolitan (1), Finnish (1)
+</small>
 
 --
-
-#### Top languages (synchronic)
-![source languages](images/source_languages_by_number_of_volumes.png)
-
---
-#### But these change over time
+#### But top 5 change over time
 
 ![languages diachronic](images/popularity_of_top_5_languages.png)
 
@@ -184,9 +165,6 @@ Hungarian (1), Sanskrit (1), Chinese (1), Georgian (1), Neapolitan (1), Farsi (1
 #### Summary of figures
 - Saddle points around the World Wars
 - Catastrophe leads to reorganization of Yiddish translation
-	- 1. New York, German
-	- 2. Warsaw, Russian
-	- 3. Buenos Aires, Hebrew
 
 --
 #### Interesting!
@@ -197,11 +175,11 @@ Hungarian (1), Sanskrit (1), Chinese (1), Georgian (1), Neapolitan (1), Farsi (1
 #### Annotation process generates questions
 
 - Annotation is not only a means to an end
-	- end: some hypothetical state where you've perfectly captured everything
-	- instead, it's an engine for textual discovery
-- Precisely where annotation breaks down, this is where the most interesting things are found
+	- it's also an engine for textual discovery
+- Precisely where the annotation breaks down is where things get interesting
 
---
+
+---
 #### Example: [Paskarella](https://iberz.org/id/ytd001076/) by Boccaccio(?)
 
 ![paskarella](images/paskarella.png)<!-- .element height="450px;" -->
@@ -211,12 +189,11 @@ Hungarian (1), Sanskrit (1), Chinese (1), Georgian (1), Neapolitan (1), Farsi (1
 - Published in 1899 by B. Rabinovitts in New York
 - Translated (or "<em>baarbet</em>," i.e. "adapted") by D. M. Hermalin
 	- Exceedingly prolific translator/adapter
-	- Popular in Kotik's provincial library
 - Does not correspond to anything in Boccaccio's oeuvre
-	- Nor does another supposed Boccaccio work: [<em>Madam babeta</em>](https://iberz.org/id/ytd000109/)
+- Pseudotranslation!
 
 --
-And yet they reappear in a 1927 English edition, published by Samuel Roth
+And yet it reappears in a 1927 English edition, published by Samuel Roth
 
 ![english paskarella](images/02-pasquerella-and-madonna-babetta.jpg)<!-- .element height="450px;" -->
 
@@ -224,50 +201,32 @@ And yet they reappear in a 1927 English edition, published by Samuel Roth
 #### Samuel Roth
 ![roth](images/roth.jpg)<!-- .element height="200px;" -->
 - American publisher, born in Galicia in 1893
-- Went to jail in the 1930's for pornography distribution
 - Best known for publishing <em>Ulysses</em> without Joyce's consent
+- Translates this Yiddish pseudotranslation into English, passes it off again
 
 --
-#### Samuel Roth
-- Produced/published phony translations like:
-	- 1941: <em>I Was Hitler’s Doctor</em>
-	- 1951: <em>My Sister and I</em>, supposedly a lost work by Nietzsche
-- It seems he turned to Yiddish popular literature, selected a pseudotranslation of Boccaccio, and once more passed it off as the genuine article
+#### Here the annotation scheme breaks down a little
 
---
-#### Doesn't necessary fit well into the annotation scheme
-
-![paskarella iberz](images/paskarella_iberz.png)<!-- .element height="450px;" -->
-
---
-#### How are anomalies annotated?
-
-- With notes (as above)
-- Also with keywords
-	- not yet implemented on the front end
+- Can't quite capture this very strange book and its afterlife
+- So how do we annotate this?
+	- Imperfectly:
+		- With a "notes" section
+		- And with keywords
 
 --
 #### Keywords: <em>false attribution</em> and <em>probable pseudotranslation</em>
 
 - Nine in total in the database
 	- Including a misattribution of Mayne-Reid (as Verne), and an invented Tolstoy
-	- Eight of which were published before WWI
+	- Eight of these were published before WWI
 	- Five of which were published by the infamous <em>Hebrew Publishing Company</em>
 
 --
-- This suggests certain translational practices prevalent in this era, and in particular by this publisher
+- This suggests certain translational practices prevalent in this era and from this publisher
 	- Very adaptive translational norm
-	- Borne out in close reading
-		- e.g. a Verne translation (<em>Di ferlorene shif</em>, Tanenboym)
-			- significantly expands chapter on Australia for political reasons
-
---
-### Elliptical reading
-- Moving back and forth between the close and the distant
-	- using the movement to produce a deeper image of the subject
 
 ---
-# Thank you!
+![end](images/end.png)
 
 
 

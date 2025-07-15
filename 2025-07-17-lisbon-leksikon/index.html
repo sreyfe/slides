@@ -127,51 +127,11 @@ We wanted to work on two things:
 3. Manually evaluate
 
 --
-#### Example input
-
-Ash, Sholem
-November 1, 1880 – July 10, 1957
-
-Born in Kutne (Kutno), Poland, according to his birth certificate—it was January 1; according to his mother’s reckoning—four days after Passover. His father, Rabbi Moyshe Gombiner, came from a family of ritual slaughterers and was something of a scholar as well as a philanthropist. He did business in sheep and also ran a hotel. His mother, Malka, née Vidovski, the second wife of his father and much younger, came from a scholarly family in Lentshits (Łęczyca). He was raised at home “between two worlds”: on one side his full brothers—tall, healthy youngsters who did business with butchers and Gentiles and loved life’s adventures (they later moved to the United States and made their way there).<!-- .element: style="text-align:justify;font-size:0.6em;" -->
-
---
-#### Example output
-
-![relik](images/relik_output.png)
-
---
-#### Boiled down...
-```
->>> ", ".join([c.to_dict()["text"] for c in p["relik"].candidates.span[0][0]])
-```
-Poland, Kutno, Sholem Asch, Edwin B. Astwood, Mútne, Polish People's Republic, Mutne, Olesno, National People's Union, Kutkh, Kutno County, Nur-Sultan, Tosno, Grodno, Sittwe, Ashmyany, Bełtno, Second Polish Republic, Kupiansk, Kotka, Dubno, Kutka, Kutscha family, Rottne, Poles, Klement Gottwald, Poświętne, Opoczno County, Antonín Novotný, Opole, Vitki, Talne, Opatów, Jatne, Ketsch, Lviv, Mežotne, Herbert Kutscha, Kutno railway station, Cross of Merit (Poland), Gomel, Karl-Josef Kutsch, Līgatne, William Astbury, Hans Vatne, Piotrków Trybunalski, Shtetl, Poświętne, Wołomin County, Sutno, Wrocław, Muczne, Sytno, Piet van Asch, AST (publisher), Kutsche, Kutná Hora, Poświętne, Białystok County, Kütke, Gottne, Kutkivtsi, Karl Ast, Tuczno, Temporary Commission of Confederated Independence Parties, Pryvitne, Kot, Sitno, Zamość County, Tutkowski, Kut-e Sheykh, Ratne, Kutkai, Kupiškis, Karl-Heinz Kutschke, Moeljatno, Leszno, Fred Astbury, Łopatno, Wojnicz, Ustka, Opoczno, Polish–Lithuanian Commonwealth, Vinnytsia, Kurzawa, Congress Poland, Polish language, Birth certificate, Pałuki, Łask, Kútniky, Herbert Nitsch, Order of Klement Gottwald, Aš, Jilemnice, John W. Dutko, Krasny Kut, Saratov Oblast, Ali Asghar Kutki, Kutsenko, Shchuchyn, Locarno, Stanisław Kot, Berezne, Motnik<!-- .element: style="text-align:justify;font-size:0.6em;" -->
-
---
-#### Fuzzy matching
-<p>
-Poland :  19<br>
-Kutno :  10<br>
-Sholem Asch :  85<br>
-Edwin B. Astwood :  33<br>
-Mútne :  11<br>
-Polish People's Republic :  26<br>
-etc. etc.
-</p><!-- .element: style="text-align:justify" -->
-
---
 
 #### Results
 - With this method, we have identified 117 Wikipedia for the of 5,807 bibliographies
 	- ca. 2%
 - This implies that few people in the <em>Leksikon</em> are present on Wikipedia
-
---
-
-- There are indeed problems with the fuzzy search
-	- Anyone have a better idea?
-- Nonetheless, even if this method only captured 1/10th of the <em>Leksikon</em> people represented on Wikipedia,
-there are still thousands of entries from the <em>Leksikon</em> not on Wikipedia
-	- Serious knowledge gap
 
 ---
 #### Part II: How can we correct the underrepresentation?
@@ -186,36 +146,58 @@ Maybe Relik?
 
 #### Problem:
 
-- Relik captures relation extraction
-- But doesn't capture what Wikipedia/WikiData does not already know
-	- Only uses WikiData properties
-	- Especially a problem with migrational predicates, since WikiData doesn't model this well
+- Relik does relation extraction
+- But doesn't capture what Wikipedia/Wikidata does not already know
+	- Only uses Wikidata properties
+	- Especially a problem with migrational predicates, since Wikidata doesn't model this well
 
 --
+#### In other words:
+Since Relik relies on Wikidata, it is better at telling us what Wikidata doesn't know!
+	- (our method in part 1)
+
+--
+
 ### Open Information Extraction is better
 
-We'll use:
+We'll use a model based of WikiBio:
 Stranisci, M. A., Damiano, R., Mensa, E., Patti, V., Radicioni, D., & Caselli, T. (2023, July). WikiBio: a Semantic Resource for the Intersectional Analysis of Biographical Events. In Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) (pp. 12370-12384).<!-- .element: style="text-align:justify;font-size:.7em" -->
 
 --
 #### WikiBio
 
-- biographical event recognition, by Stranisci et al.
-- used to create World Literature Knowledge Graph
-- investigate representation of "transnational" authors on Wikipedia:
+- a dataset made up of Wikipedia biographies annotated for events and entities
+	- "He <em>went</em> to <em>Canada</em>"
+- DistilBERT model trained on this data for biographical event and entity recognition
+
+--
+#### WikiBio
+- Stranisci et al. used this to create World Literature Knowledge Graph
+- and investigate representation of "transnational" authors on Wikipedia:
 
 ![transnational](images/transnational.png)
 
 --
+#### This extracts 24,119 entities:
+![entities](images/entities.png)
 
-#### WikiBio: Most popular events
+--
+#### And 4,654 events:
+![events](images/events_all.png)
+
+--
+
+#### The most popular events
 
 ![events](images/events.png)<!-- .element height="450px;" -->
 
 --
 #### Good thing we didn't use Relik for this...
 
-We need open information extraction in order not to reproduce the canonical topics/models.
+- Since Relik uses Wikidata properties
+	- and Wikidata does not have much in the way of migration
+
+- This is why we need open information extraction in order not to reproduce the canonical topics/models.
 
 --
 #### In other words:
@@ -253,7 +235,7 @@ Upload the triples to the triple store of the Univeristy of Torino<br>
 - 2. Produce a more polished, more public knowledge graph
 
 --
-#### 1. Improve  results
+#### 1. Improve results
 - We have begun annotatating using [aequa.tech]("https://aequa-tech.com/") annotation platform
 
 [![aequa](images/aequa.png)<!-- .element height="400px;" -->](https://label.aequa-tech.com/annotators/tasks/46/text_lines/4369)
