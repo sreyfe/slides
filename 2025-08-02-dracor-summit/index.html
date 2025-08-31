@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>YiDraCor</title>
+
+		<link rel="stylesheet" href="../revealjs/dist/reset.css">
+		<link rel="stylesheet" href="../revealjs/dist/reveal.css">
+		<link rel="stylesheet" href="../revealjs/dist/theme/serif.css">
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown="" data-separator="^\n---\n" data-separator-vertical="^\n--\n" data-charset="utf-8">
+					<script type="text/template">
+## YiDraCor
+Jonah Lubin, Ruthie Abeliovich, Sinai Rusinek,
+Stephan Schwarz, Parker Robbins
+
+--
+#### State of the Corpus
+
+- Eight plays
+- Date range: 1887-1918
+- Three authors
+	- Joseph Lateiner, Jane Rose, Sholem Aleichem
+
+--
+#### Origins
+
+- Began at [DraCor Onboarding Workshop for Hebrew and Yiddish](https://www.ada.fu-berlin.de/en/kalender/HeDraCorWorkshop.html)
+	- September 2023
+	- When Ruthie Abeliovich and Sinai Rusinek came to the FU
+- Proceeds out of the DYBBUK project
+
+--
+
+#### DYBBUK project
+![DYBBUK](images/dybbuk.jpg)<!-- .element height="150px;" -->
+- Project hosted at the University of Haifa and Tel Aviv University
+- Ruthie Abeliovich is PI, Sinai Rusinek is DH consultant
+- Focuses on Yiddish popular theater between 1880-1920
+
+--
+
+#### Origins
+- Started out by looking at plays by Joseph Lateiner (1853 – 1935)
+	- Wrote the eponymous <em>Dybbuk</em> of the DYBBUK project
+	- Very popular, but seen as low brow and mostly forgotten
+	- Active in Bucharest in New York
+
+--
+
+#### Lateiner
+![lateiner](images/lateiner.jpeg)<!-- .element height="450px;" -->
+
+---
+
+## Round One
+
+--
+
+#### Converting Lateiner
+- Began with printed Lateiner material archived by Polona
+
+![man_untern_tish](images/man_untern_tish.png)<!-- .element height="450px;" -->
+
+--
+
+#### First OCR'd using Transkribus using Sinai's Yidrama model
+
+![untern tish transkribus](images/untern_tish_transkribus.png)<!-- .element height="450px;" -->
+
+--
+
+#### But there are orthography problems...
+
+- These editions used an older, highly vocalized, Germanizing orthography that the model wasn't picking up
+- It's important to maintain varied Yiddish orthography and not silently "correct" it (my claim)
+
+--
+
+#### There followed a long manual annotation process
+
+- Correcting OCR errors, adding back the points it missed
+- Then (script-assisted) annotation with EZDrama
+- Ultimately resulting in good TEI
+
+--
+
+#### But Stephan Schwarz did it better...
+
+- Working on the longer Lateiner play <em>Yudale der blinder</em>, he produced a script that
+reinserted the semi-consistent pointing
+	- This script is one of the few descriptions of this sort of Yiddish orthography
+		- And certainly the only digital description
+- Orthographic description as Python script
+
+--
+
+#### But generally speaking, this was the process for the first round:
+
+1. Transkribus OCR of PDF's from Polona and Yiddish Book Center
+2. Correction
+3. EZDrama annotation
+4. Finalize TEI
+
+---
+
+## Round Two
+
+--
+
+#### Unlike some other languages...
+- There are very few online full texts in Yiddish
+	- no Proyekt Yidnburg (yet)
+- So there isn't much HTML lying around to convert to TEI XML
+
+--
+
+#### Luckily, Refoyel Finkl exists
+
+![finkl](images/finkl.png)<!-- .element height="450px;" -->
+
+--
+
+#### Refoyel Finkl
+- UKentucky CompSci professor, has been doing Yiddish DH for a long time
+- Has many resources on his site
+	- His own dictionary, a digitization of Stutchkoff's <em>Oytser</em>
+- And importantly, a digital edition of the complete works of Sholem Aleichem
+	- Which he let us get our hands on
+
+--
+
+#### Includes five plays
+![complete works](images/complete_works.png)<!-- .element height="450px;" -->
+
+--
+
+#### In pretty comprehensive HTML
+![finkl html](images/finkl_html.png)
+
+-- 
+
+#### Which can be converted with Python + a few libraries
+![html to tei](images/html_to_tei.png)<!-- .element height="450px;" -->
+
+--
+
+#### Et voila!
+
+- Five more plays
+
+---
+
+## Round Three
+
+--
+
+#### This brings us up to the present day...
+- But first, some backstory
+
+--
+
+#### The DYBBUK project has done a lot of annotation
+- Of handwritten prompting notebooks from Lateiner plays
+
+--
+
+#### Looks like this
+![prompting notebook](images/notebook.png)<!-- .element height="450px;" -->
+
+--
+
+#### We are now working on converting these to TEI XML
+- In particular, Parker Robbins of UChicago is building a pipeline
+- I'll say no more, because we'll be presenting on this soon...
+
+---
+
+### That's more or less where we are right now
+- Talk about foreign tag?
+
+--
+
+## Thanks!
+
+
+					</script>
+				</section>
+			</div>
+		</div>
+
+		<script src="../revealjs/dist/reveal.js"></script>
+		<script src="../revealjs/plugin/notes/notes.js"></script>
+		<script src="../revealjs/plugin/markdown/markdown.js"></script>
+		<script src="../revealjs/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
