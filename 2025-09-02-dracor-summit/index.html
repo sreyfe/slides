@@ -59,17 +59,19 @@ Stephan Schwarz, Parker Robbins
 ---
 
 ## Round One
+- The first three plays
 
 --
 
 #### Converting Lateiner
 - Began with printed Lateiner material archived by Polona
+	- Firstly, <em>Der man untern tish</em>
 
 ![man_untern_tish](images/man_untern_tish.png)<!-- .element height="450px;" -->
 
 --
 
-#### First OCR'd using Transkribus using Sinai's Yidrama model
+#### OCR'd using Transkribus using Sinai's Yidrama model
 
 ![untern tish transkribus](images/untern_tish_transkribus.png)<!-- .element height="450px;" -->
 
@@ -92,15 +94,26 @@ Stephan Schwarz, Parker Robbins
 
 #### But Stephan Schwarz did it better...
 
-- Working on the longer Lateiner play <em>Yudale der blinder</em>, he produced a script that
-reinserted the semi-consistent pointing
-	- This script is one of the few descriptions of this sort of Yiddish orthography
-		- And certainly the only digital description
-- Orthographic description as Python script
+- Working on the longer Lateiner play <em>Yudale der blinder</em>
+- Used already-corrected pages as ground truth, used this to automatically correct unseen pages
+- Then did some spot correction with this table
 
 --
 
-#### But generally speaking, this was the process for the first round:
+#### Beautiful table
+
+![correction table](images/correction_table.png)<!-- .element height="450px;" -->
+
+--
+
+#### Beautiful pipeline
+- This pipeline ([more here](https://github.com/esteeschwarz/ETCRA5_dd23/blob/master/dybbuk/README.md)) is one of the few descriptions of this sort of Yiddish orthography
+	- And certainly the only digital description
+- Orthographic description as script
+
+--
+
+#### So generally speaking, this was the process for the first round:
 
 1. Transkribus OCR of PDF's from Polona and Yiddish Book Center
 2. Correction
@@ -110,6 +123,7 @@ reinserted the semi-consistent pointing
 ---
 
 ## Round Two
+- Five plays more
 
 --
 
@@ -140,23 +154,27 @@ reinserted the semi-consistent pointing
 
 --
 
+#### Look like this
+![finkl site](images/finkl_site.png)<!-- .element height="450px;" -->
+
+--
+
 #### In pretty comprehensive HTML
 ![finkl html](images/finkl_html.png)
 
--- 
+--
 
 #### Which can be converted with Python + a few libraries
 ![html to tei](images/html_to_tei.png)<!-- .element height="450px;" -->
 
 --
 
-#### Et voila!
-
-- Five more plays
+## Et voila! Add in some metadata and you've got five more plays
 
 ---
 
 ## Round Three
+- The future
 
 --
 
@@ -167,6 +185,7 @@ reinserted the semi-consistent pointing
 
 #### The DYBBUK project has done a lot of annotation
 - Of handwritten prompting notebooks from Lateiner plays
+- Scripts, more or less
 
 --
 
@@ -182,11 +201,39 @@ reinserted the semi-consistent pointing
 ---
 
 ### That's more or less where we are right now
-- Talk about foreign tag?
+- One last thing before I go
 
 --
 
-## Thanks!
+#### \<foreign\> tag
+
+- General, philosophical question: what is "foreign" in a language?
+- Exacerbated by Yiddish's mixedness
+	- Semitic, Slavic elements
+	- Background of polyglossia
+
+--
+
+#### \<foreign\> tag
+
+- When is a Hebraism/Slavicism a "part of the language," when should it be seen as an "intrusion"?
+	- Provisionally solved by question "is it in the dictionaries?"
+		- Unsatisfying
+
+--
+
+#### \<foreign\> tag
+
+- How should we classify mixed utterances, or utterances hard to classify to single national language
+	- e.g. Hebrew-Aramaic mixture (<em>loshn-koydesh</em>)
+	- e.g. Polish-Ukrainian-Russian mixture and uncertainty
+- Non iso tags?
+	- `<foreign xml:lang="slav">`
+	- `<foreign xml:lang="loshn-koydesh">`
+
+--
+
+## Thanks, would love to hear your thoughts!
 
 
 					</script>
